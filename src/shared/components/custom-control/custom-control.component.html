@@ -1,0 +1,22 @@
+<section class="custom-input-section">
+    <div class="custom-input-wrapper">
+        <input
+            class="custom-input"
+            [type]="isPasswordVisible() ? 'text' : 'password'"
+            [formControl]="formControl"
+        />
+        <ng-container>
+            <button (click)="togglePasswordType()" class="right-controller">
+                <img *ngIf="isPasswordVisible()" src="/assets/images/eye.svg" alt="eye" />
+                <img *ngIf="!isPasswordVisible()" src="/assets/images/slash-eye.svg" alt="slash-eye" />
+            </button>
+        </ng-container>
+    </div>
+    <app-password-strength
+        class="password-strength"
+        [currentPassword]="formControl.value"
+        [passwordIncludesRegExp]="passwordIncludesRegExp"
+        [passwordInvalidStatesRegExp]="passwordInvalidStatesRegExp"
+        *ngIf="showPasswordStrength"
+    ></app-password-strength>
+</section>
