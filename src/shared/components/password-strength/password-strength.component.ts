@@ -40,11 +40,12 @@ export class PasswordStrengthComponent implements OnChanges {
     }
 
     private setPasswordStrength(): void {
+      const defaultScoreState = 1;
         const keys = Object.keys(passwordIncludesRegExp);
         const strengthScore = keys.reduce((acc, key) => {
             const hasSpecificType = new RegExp(passwordIncludesRegExp[key], 'gi').test(this.currentPassword);
             return hasSpecificType ? acc + 1 : acc;
-        }, 1);
+        }, defaultScoreState);
         this.setCssStyle(strengthScore);
     }
 

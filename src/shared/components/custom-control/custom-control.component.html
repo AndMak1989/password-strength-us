@@ -2,7 +2,7 @@
     <div class="custom-input-wrapper">
         <input
             class="custom-input"
-            [type]="isPasswordVisible() ? 'text' : 'password'"
+            [type]="inputType()"
             [formControl]="formControl"
         />
         <ng-container>

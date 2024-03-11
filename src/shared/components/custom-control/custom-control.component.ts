@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input, signal } from '@angular/core';
+import {Component, computed, forwardRef, Input, Signal, signal} from '@angular/core';
 import {
     ControlValueAccessor,
     FormControl,
@@ -30,6 +30,7 @@ export class CustomControlComponent implements ControlValueAccessor {
     @Input() passwordIncludesRegExp: Record<string, string> = passwordIncludesRegExp;
     @Input() passwordInvalidStatesRegExp: Record<string, string> = passwordInvalidStatesRegExp;
     public isPasswordVisible = signal(false);
+    public inputType: Signal<'text' | 'password'> = computed(()=> this.isPasswordVisible() ? 'text' : 'password')
     public formControl: FormControl = new FormControl<string>('');
 
     public onChange: (value: string) => void = noop;
